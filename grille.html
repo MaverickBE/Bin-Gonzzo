@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grille Bingo</title>
+    <style>
+        /* Ajoutez votre style CSS ici si nécessaire */
+    </style>
+</head>
+<body>
+    <h1>Grille de Bingo</h1>
+
+    <div id="grille"></div>
+
+    <script>
+        // Fonction pour récupérer les paramètres de l'URL
+        function obtenirParametreURL(nomParametre) {
+            var urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(nomParametre);
+        }
+
+        // Fonction pour décoder l'état de la grille depuis l'URL
+        function decoderEtatGrille() {
+            var etatGrilleEncode = obtenirParametreURL('etat');
+            var etatGrilleJSON = decodeURIComponent(etatGrilleEncode);
+            return JSON.parse(etatGrilleJSON);
+        }
+
+        // Fonction pour décoder la liste des images depuis l'URL
+        function decoderListeImages() {
+            var imagesEncode = obtenirParametreURL('images');
+            var imagesJSON = decodeURIComponent(imagesEncode);
+            return JSON.parse(imagesJSON);
+        }
+
+        // Fonction pour afficher la grille avec les images
+        function afficherGrille() {
+            var etatGrille = decoderEtatGrille();
+            var images = decoderListeImages();
+
+            // Assurez-vous que la div avec l'id "grille" existe
+            var grilleDiv = document.getElementById("grille");
+            if (!grilleDiv) {
+                console.error("La div avec l'id 'grille' n'existe pas.");
+                return;
+            }
+
+            // Remplir la grille avec les images
+            var count = 0;
+            for (var i = 0; i < 5; i++) {
+                var row = document.createElement("div");
+                row.className = "row";
+                for (var j = 0; j < 5; j++) {
+                    var cell = document.createElement("div");
+                    cell.className = "cell";
+
+                    var img = document.createElement("img");
+                    img.src = "chemin/vers/dossier/images/" + images[count];
+                    img.alt = "Image " + (count + 1);
+
+                    // Ajouter la classe "selected" si la case est sélectionnée
+                    if (etatGrille[count]) {
+                        cell.classList.add("selected");
+                    }
+
+                    cell.appendChild(img);
+                    row.appendChild(cell);
+                    count++;
+                }
+                grilleDiv.appendChild(row);
+            }
+        }
+
+        // Appelez la fonction pour afficher la grille lorsque la page est chargée
+        window.onload = function () {
+            afficherGrille();
+        };
+    </script>
+</body>
+</html>
