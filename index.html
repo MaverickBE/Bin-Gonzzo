@@ -4,6 +4,8 @@
     <script src="https://kit.fontawesome.com/7cfb1ef2dc.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=October+Crow&display=swap">
+
     <title>Générateur de cartes de Bingo</title>
     <style>
         h1 {
@@ -159,7 +161,7 @@
     <source src="Trailer_phasmo.mp4" type="video/mp4">
 </video>
 
-    <button onclick="genererCarte()">Générer une nouvelle carte</button>
+    <button id="boutonGenerer" onclick="genererNouvelleCarte()">Générer une nouvelle carte</button>
     <div id="bingo-message">BINGO</div>
     <table id="carte"></table>
 
@@ -171,7 +173,7 @@
     </div>
 
     <script>
-        function genererCarte() {
+        function genererNouvelleCarte() {
             // Récupérer la référence de la table
             var table = document.getElementById("carte");
             console.log("Carte générée");
@@ -307,17 +309,33 @@
         }
 
 
+        // Fonction pour masquer la grille et afficher le bouton
+        function masquerGrille() {
+            var table = document.getElementById("carte");
+            var boutonGenerer = document.getElementById("boutonGenerer");
+
+            // Vider le contenu de la grille
+            table.innerHTML = "";
+
+            // Afficher le bouton "Générer une nouvelle carte"
+            boutonGenerer.style.display = "block";
+
+            boutonGenerer.disabled = false;
+    
+        }
+
+
         // Fonction pour afficher le message "Bingo"
         function afficherBingo() {
             var bingoMessage = document.getElementById('bingo-message');
             bingoMessage.style.display = "block";
             console.log('BINGO')
 
-            // Optionnel : Masquer le message après quelques secondes (6000 ms dans cet exemple)
             setTimeout(function () {
-                bingoMessage.style.display = "none";
-            }, 6000);
-        }
+            bingoMessage.style.display = "none";
+            masquerGrille();
+        }, 5000);
+    }
 
 
         // Fonction pour vérifier s'il y a une ligne de 5 cases validées
