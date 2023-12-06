@@ -4,7 +4,7 @@
     <script src="https://kit.fontawesome.com/7cfb1ef2dc.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
     <title>Bin'Gonzzo</title>
     <style>
         h1 {
@@ -16,7 +16,7 @@
         }
 
 
-        button {
+        #boutonGenerer {
             padding: 18px 18px;
             align-items: center;
             text-align: center;
@@ -28,7 +28,14 @@
             border-radius: 5px;
             cursor: pointer;
             margin-bottom: 10px;
+            transition: background-color 0.3s, color 0.3s;
         }
+
+        #boutonGenerer:hover {
+        /* Styles au survol */
+        background-color: white;
+        color: #000000;
+}
 
         body {
             background: linear-gradient(180deg, #000000,#000000, #023604, #03460e, #02380b, #012b0a, #000000);
@@ -68,7 +75,17 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+
         }
+
+        td img {
+            transition: transform 1.5s ease;
+
+        }
+
+        .selected img {
+    transform: rotateY(360deg);
+}
 
         img {
             max-width: 100%;
@@ -88,7 +105,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(70, 69, 69, 0.7);
+            background-color: rgba(94, 94, 94, 0.7);
             z-index: 2;
             display: none;
         }
@@ -124,6 +141,11 @@
             transform: translate(-50%, -50%);
             width: 60px;
             height: 60px;
+            transition: transform 1.5s ease;
+        }
+
+        .selected .logo {
+            transform: translate(-50%, -50%) rotateY(180deg);
         }
 
         #reseaux-sociaux {
@@ -151,17 +173,35 @@
             display: none;
             z-index: 3;
         }
+
+        #boutonPartager {
+            display: block;
+            padding: 18px 18px;
+            align-items: center;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
     <img src="Titre_Bingonzzo.png" alt="Logo_Bingonzzo"style="width: 600px; height: auto; border-radius: 5px;">
 
-<video autoplay muted loop>
-    <source src="Trailer_phasmo.mp4" type="video/mp4">
-</video>
+    <video autoplay muted loop>
+        <source src="Trailer_phasmo.mp4" type="video/mp4">
+    </video>
+
+    <audio id="bingoSound" src="Bruit.mp3"></audio>
 
     <button id="boutonGenerer" onclick="genererNouvelleCarte()">Générer une nouvelle carte</button>
+    <button id="boutonPartager" onclick="partagerGrille()" style="display: none;">Partager ma grille</button>
     <div id="bingo-message">BINGO</div>
     <table id="carte"></table>
 
@@ -177,6 +217,10 @@
             // Récupérer la référence de la table
             var table = document.getElementById("carte");
             console.log("Carte générée");
+
+            // Afficher le bouton "Partager ma grille"
+            var boutonPartager = document.getElementById("boutonPartager");
+            boutonPartager.style.display = "block";
 
         // Fonction pour mélanger un tableau
         function shuffle(array) {
@@ -205,6 +249,8 @@
                 cell.classList.add("selected");
                 console.log("Case selected")
             }
+
+            jouerSonBingo();
         }
 
             // Effacer le contenu de la table
@@ -319,6 +365,8 @@
 
             // Afficher le bouton "Générer une nouvelle carte"
             boutonGenerer.style.display = "block";
+
+            boutonPartager.style.display = "none";
 
             boutonGenerer.disabled = false;
     
@@ -447,6 +495,12 @@
                     afficherBingo();
                 }
             }
+        }
+
+        function jouerSonBingo() {
+            var audio = document.getElementById('bingoSound');
+            audio.volume = 0.2;
+            audio.play();
         }
     </script>
 </body>
