@@ -73,6 +73,9 @@ function genererNouvelleCarte(images) {
     var url = "?seed=" + seed;
     window.history.pushState({ path: url }, "", url);
     console.log(url);
+
+    // Afficher le bouton de partage
+    document.getElementById("boutonPartager").style.display = "block";
   }
 
   // Récupérer la référence de la table
