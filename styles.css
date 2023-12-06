@@ -1,7 +1,7 @@
 #boutonGenerer {
-    max-width: 100%; /* Ajustez la largeur maximale selon vos besoins */
-    width: 18%;
-    padding: 18px 18px;
+    width: 50%;
+    max-width: 320px; 
+    padding: 15px;
     align-items: center;
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
@@ -15,6 +15,21 @@
     transition: background-color 0.3s, color 0.3s;
 }
 
+@media only screen and (max-width: 600px) {
+    #boutonGenerer {
+        font-size: 10px;
+    }
+}
+video {
+    width: 100%;
+    height: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    video {
+        height: 100%;
+    }
+}
 
 #boutonGenerer:hover {
     background-color: white;
