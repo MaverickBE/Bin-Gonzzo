@@ -3,10 +3,6 @@ function genererNouvelleCarte() {
     var table = document.getElementById("carte");
     console.log("Carte générée");
 
-    // Afficher le bouton "Partager ma grille"
-    var boutonPartager = document.getElementById("boutonPartager");
-    boutonPartager.style.display = "block";
-
 // Fonction pour mélanger un tableau
 function shuffle(array) {
     var currentIndex = array.length, randomIndex;
