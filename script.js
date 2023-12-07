@@ -126,9 +126,11 @@ function ControlSeedURL() {
   var paramsString = window.location.search;
   var searchParams = new URLSearchParams(paramsString);
   if (searchParams.has("seed") === true) {
-    if (searchParams.get("seed").length == 50)
+    if (searchParams.get("seed").length == 50) {
       CutSeed(searchParams.get("seed"));
-    else alert("Mauvais format de seed");
+    } else {
+      alert("Mauvais format de seed");
+    }
   }
 }
 
@@ -139,6 +141,7 @@ function doublon(tableau) {
   return tableau.length !== tableauunique.length;
 }
 
+// Découpe le seed
 function CutSeed(seed) {
   var ListeImagesGenerees = [];
   var tableidimages = seed.match(/.{1,2}/g);
@@ -149,10 +152,16 @@ function CutSeed(seed) {
       }
     }
   }
+  // Vérifie s'il y a des doublons dans la liste d'ID
   if (doublon(ListeImagesGenerees)) {
     alert("Mauvais format de seed");
   } else {
-    genererNouvelleCarte(ListeImagesGenerees);
+    // Vérifie qu'il y a bien 25 ID's d'images
+    if (ListeImagesGenerees.length == 25) {
+      genererNouvelleCarte(ListeImagesGenerees);
+    } else {
+      alert("Mauvais format de seed");
+    }
   }
 }
 
