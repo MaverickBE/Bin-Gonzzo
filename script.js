@@ -126,11 +126,18 @@ function ControlSeedURL() {
   var paramsString = window.location.search;
   var searchParams = new URLSearchParams(paramsString);
   if (searchParams.has("seed") === true) {
-    CutSeed(searchParams.get("seed"));
+    if (searchParams.get("seed").length == 50)
+      CutSeed(searchParams.get("seed"));
+    else alert("Mauvais format de seed");
   }
 }
 
 ControlSeedURL();
+
+function doublon(tableau) {
+  var tableauunique = Array.from(new Set(tableau));
+  return tableau.length !== tableauunique.length;
+}
 
 function CutSeed(seed) {
   var ListeImagesGenerees = [];
@@ -142,7 +149,11 @@ function CutSeed(seed) {
       }
     }
   }
-  genererNouvelleCarte(ListeImagesGenerees);
+  if (doublon(ListeImagesGenerees)) {
+    alert("Mauvais format de seed");
+  } else {
+    genererNouvelleCarte(ListeImagesGenerees);
+  }
 }
 
 function copierLien() {
