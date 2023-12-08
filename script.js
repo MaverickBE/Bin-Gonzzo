@@ -237,16 +237,52 @@ function masquerGrille() {
   boutonGenerer.disabled = false;
 }
 
-// Fonction pour afficher le message "Bingo"
 function afficherBingo() {
   var bingoMessage = document.getElementById("bingo-message");
   var selectedCells = document.querySelectorAll(".selected");
 
-  // Ajouter la classe "rotate" aux cellules sélectionnées
-  selectedCells.forEach(function (cell) {
-    cell.classList.add("fade");
-    cell.classList.add("spin");
-  });
+  // Vérification horizontale, verticale et diagonale
+  for (var i = 0; i < 5; i++) {
+    // Vérification horizontale
+    if (verifierLigne(i)) {
+      // Ajoute la classe "fade" aux cellules de la ligne gagnante
+      for (var j = 0; j < 5; j++) {
+        var cell = document.getElementById("carte").rows[i].cells[j];
+        cell.classList.add("fade");
+      }
+      break;
+    }
+
+    // Vérification verticale
+    if (verifierColonne(i)) {
+      // Ajoute la classe "fade" aux cellules de la colonne gagnante
+      for (var k = 0; k < 5; k++) {
+        var cell = document.getElementById("carte").rows[k].cells[i];
+        cell.classList.add("fade");
+      }
+      break;
+    }
+
+    // Vérification diagonale (de gauche à droite)
+    if (verifierDiagonaleGaucheDroite()) {
+      // Ajoute la classe "fade" aux cellules de la diagonale gagnante
+      for (var l = 0; l < 5; l++) {
+        var cell = document.getElementById("carte").rows[l].cells[l];
+        cell.classList.add("fade");
+      }
+      break;
+    }
+
+    // Vérification diagonale (de droite à gauche)
+    if (verifierDiagonaleDroiteGauche()) {
+      // Ajoute la classe "fade" aux cellules de la diagonale gagnante
+      for (var m = 0; m < 5; m++) {
+        var cell = document.getElementById("carte").rows[m].cells[4 - m];
+        cell.classList.add("fade");
+      }
+      break;
+    }
+  }
 
   bingoMessage.style.display = "block";
   console.log("BINGO");
