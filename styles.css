@@ -1,3 +1,10 @@
+#Logo_Bingonzzo {
+    width: 100%; 
+    max-width: 100%;
+    height: auto; 
+    border-radius: 5px;
+}
+
 #boutonGenerer {
     width: 50%;
     max-width: 320px; 
@@ -15,6 +22,11 @@
     transition: background-color 0.3s, color 0.3s;
 }
 
+#boutonGenerer:hover {
+    background-color: white;
+    color: #000000;
+}
+
 @media only screen and (max-width: 600px) {
     #boutonGenerer {
         font-size: 10px;
@@ -28,26 +40,9 @@ video {
 
 @media only screen and (max-width: 600px) {
     video {
-        display: none;
-    }
-
-    video[poster] {
-        display: block;
         width: 100%;
         height: auto;
     }
-}
-
-#boutonGenerer:hover {
-    background-color: white;
-    color: #000000;
-}
-
-#Logo_Bingonzzo {
-    width: 100%; 
-    max-width: 100%;
-    height: auto; 
-    border-radius: 5px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -105,6 +100,18 @@ td {
 td img {
     transition: transform 1.5s ease;
 
+}
+
+@media only screen and (max-width: 600px) {
+    td img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    td {
+        height: 60px; /* Ajustez la hauteur de la case selon vos besoins */
+    }
 }
 
 .selected img {
