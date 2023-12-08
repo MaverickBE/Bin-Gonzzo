@@ -1,3 +1,4 @@
+/* L'image de Titre */
 #Logo_Bingonzzo {
     width: 100%; 
     max-width: 100%;
@@ -5,6 +6,7 @@
     border-radius: 5px;
 }
 
+/* Le media querie pour ce logo */
 @media only screen and (max-width: 600px) {
     /* Styles spécifiques pour les écrans de moins de 600px de large */
     #Logo_Bingonzzo {
@@ -12,6 +14,7 @@
     }
 }
 
+/* Style de base du bouton "Générer une nouvelle carte" */
 #boutonGenerer {
     padding: 18px 18px;
     align-items: center;
@@ -28,17 +31,20 @@
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* Style au passage de la souris sur le bouton "Générer une nouvelle carte" */
 #boutonGenerer:hover {
     background-color: white;
     color: #000000;
 }
 
+/* Le media querie pour ce bouton (écran 600px) */
 @media only screen and (max-width: 600px) {
     #boutonGenerer {
         max-width: 100%;
     }
 }
 
+/* Le media querie pour ce bouton (écran 500px) */
 @media only screen and (max-width: 500px) {
     #boutonGenerer {
         font-size: 12px;
@@ -46,6 +52,7 @@
     }
 }
 
+/* Style de base du bouton "Partager ma carte" */
 #boutonPartager {
     display: block;
     padding: 18px 18px;
@@ -61,17 +68,20 @@
     margin-bottom: 10px;
 }
 
+/* Style au passage de la souris sur le bouton "Partager ma carte" */
 #boutonPartager:hover {
     background-color: white;
     color: #000000;
 }
 
+/* Le media querie pour ce bouton (écran 600px) */
 @media only screen and (max-width: 600px) {
     #boutonPartager {
         max-width: 100%;
     }
 }
 
+/* Le media querie pour ce bouton (écran 500px) */
 @media only screen and (max-width: 500px) {
     #boutonPartager {
         font-size: 12px;
@@ -79,28 +89,7 @@
     }
 }
 
-video {
-    width: 100%;
-    height: auto;
-}
-
-@media only screen and (max-width: 600px) {
-    video {
-        width: 100%;
-        height: auto;
-    }
-}
-
-body {
-    background: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-}
-
+/* Style de la vidéo en background */
 video {
     position: fixed;
     top: 50%;
@@ -113,15 +102,35 @@ video {
     z-index: -1;
 }
 
+/* Le media querie pour cette vidéo (écran 600px) */
+@media only screen and (max-width: 600px) {
+    video {
+        width: auto;
+        height: auto;
+    }
+}
+
+/* Style de base du corps de la page */
+body {
+    background: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Style de base du fond du tableau */
 table {
     background-color: rgb(0, 0, 0);
     border-spacing: 0;
     border-collapse: collapse;
 }
 
+/* Style de base de la grille */
 td {
     border: 8px solid #333333;
-    align-items: center;
     width: auto;
     height: 125px;
     text-align: center;
@@ -132,11 +141,18 @@ td {
 
 }
 
+/*  Transition quand l'image est deselectionnée */
 td img {
     transition: transform 1.5s ease;
-
 }
 
+/* Rotation de l'image quand elle est selectionnée */
+.selected img {
+    transform: rotateY(360deg);
+    transition: transform 1.5s ease;
+}
+
+/* Le media querie pour cette vidéo (écran 600px) */
 @media only screen and (max-width: 600px) {
     td img {
         width: 100%;
@@ -159,10 +175,6 @@ td img {
     td {
         height: 70px; /* Ajustez la hauteur de la case selon vos besoins */
     }
-}
-
-.selected img {
-transform: rotateY(360deg);
 }
 
 img {
@@ -224,6 +236,24 @@ img {
 
 .selected .logo {
     transform: translate(-50%, -50%) rotateY(180deg);
+    width: 70px;
+    height: 70px;
+}
+
+/* Le media querie pour cette vidéo (écran 600px) */
+@media only screen and (max-width: 600px) {
+    .selected .logo {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Le media querie pour cette vidéo (écran 500px) */
+@media only screen and (max-width: 500px) {
+    .selected .logo {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 #reseaux-sociaux {
@@ -276,3 +306,16 @@ img {
     }
 }
 
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade {
+    animation: fade 0.7s ease-in-out infinite alternate;
+    
+}

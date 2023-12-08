@@ -185,8 +185,8 @@ function copierLien() {
   // Retirer l'élément textarea temporaire de la page
   document.body.removeChild(textarea);
 
-  // Afficher une notification ou effectuer toute autre action après la copie
-  alert("Lien copié dans le presse-papiers  ");
+  // Afficher une notification  après la copie
+  alert("Lien copié dans le presse-papiers");
 }
 
 // Fonction pour mélanger un tableau
@@ -240,6 +240,14 @@ function masquerGrille() {
 // Fonction pour afficher le message "Bingo"
 function afficherBingo() {
   var bingoMessage = document.getElementById("bingo-message");
+  var selectedCells = document.querySelectorAll(".selected");
+
+  // Ajouter la classe "rotate" aux cellules sélectionnées
+  selectedCells.forEach(function (cell) {
+    cell.classList.add("fade");
+    cell.classList.add("spin");
+  });
+
   bingoMessage.style.display = "block";
   console.log("BINGO");
 
