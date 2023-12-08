@@ -33,18 +33,6 @@
     }
 }
 
-video {
-    width: 100%;
-    height: auto;
-}
-
-@media only screen and (max-width: 600px) {
-    video {
-        width: 100%;
-        height: auto;
-    }
-}
-
 @media only screen and (max-width: 600px) {
     /* Styles spécifiques pour les écrans de moins de 600px de large */
     #boutonGenerer {
@@ -76,6 +64,12 @@ video {
     height: auto;
     transform: translate(-50%, -50%);
     z-index: -1;
+}
+
+@media only screen and (max-width: 600px) {
+    video {
+        display: none;
+    }
 }
 
 table {
@@ -217,6 +211,7 @@ img {
 
 @media only screen and (max-width: 600px) {
     #bingo-message {
+        font-size: 100px;
         position: fixed;
         top: 50%;
         left: 50%;
