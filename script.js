@@ -57,6 +57,7 @@ const ListeImages = [
   // Ajoutez le reste des images ici
 ];
 
+/*
 function genererNouvelleCarte(images) {
   if (images === undefined) {
     // Mélanger les images
@@ -82,7 +83,7 @@ function genererNouvelleCarte(images) {
   var table = document.getElementById("carte");
   console.log("Carte générée");
 
-  // Effacer le contenu de la table
+  // Effacer le contenu de la table //
   table.innerHTML = "";
 
   // Récupérer la liste des images dans le dossier "images"
@@ -120,6 +121,114 @@ function genererNouvelleCarte(images) {
       count++;
     }
   }
+}
+*/
+
+// Fonction pour mélanger un tableau
+function shuffle(array) {
+  var currentIndex = array.length,
+    randomIndex;
+
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
+
+function genererNouvelleCarte(images) {
+  if (images === undefined) {
+    // Mélanger les images
+    images = shuffle(ListeImages);
+    var seed = "";
+    for (const image of images) {
+      if (image.id <= 9) {
+        seed += "0";
+      }
+      seed += image.id;
+    }
+
+    seed = seed.substring(0, 50);
+    var url = "?seed=" + seed;
+    window.history.pushState({ path: url }, "", url);
+    console.log(url);
+
+    // Afficher le bouton de partage
+    document.getElementById("boutonPartager").style.display = "block";
+  }
+
+  // Récupérer la référence de la table
+  var table = document.getElementById("carte");
+  console.log("Carte générée");
+
+  // Effacer le contenu existant de la table
+  table.innerHTML = "";
+
+  // Utiliser un fragment de document pour éviter des opérations coûteuses de rendu
+  var fragment = document.createDocumentFragment();
+
+  // Récupérer la liste des images dans le dossier "images"
+  var imagesFolder = "images/";
+
+  // Fonction pour créer une image avec chargement asynchrone
+  function createAsyncImage(imageData, cell) {
+    var img = new Image();
+    img.className = "card-image";
+    img.alt = "Image " + imageData.id;
+
+    // Fonction de rappel déclenchée lorsque l'image est chargée
+    img.onload = function () {
+      console.log("Image chargée:", imageData.name);
+
+      var overlay = document.createElement("div");
+      overlay.className = "overlay";
+
+      // Ajouter un logo de validation (visible lorsque sélectionné)
+      var logo = document.createElement("img");
+      logo.src = "images/Bingo_confirme.png";
+      logo.alt = "Bingo_confirme";
+      logo.className = "logo";
+
+      overlay.appendChild(logo);
+
+      cell.appendChild(img);
+      cell.appendChild(overlay);
+
+      cell.addEventListener("click", function () {
+        toggleSelected(this);
+        verifierBingo();
+      });
+    };
+
+    // Définir la source de l'image pour lancer le chargement
+    img.src = imagesFolder + imageData.name;
+  }
+
+  // Remplir le fragment avec les images de manière asynchrone
+  var count = 0;
+  for (var i = 0; i < 5; i++) {
+    var row = document.createElement("tr");
+    for (var j = 0; j < 5; j++) {
+      var cell = document.createElement("td");
+      createAsyncImage(images[count], cell);
+      row.appendChild(cell);
+      count++;
+    }
+
+    // Ajouter la ligne au fragment
+    fragment.appendChild(row);
+  }
+
+  // Ajouter le fragment à la table en une seule opération
+  table.appendChild(fragment);
+
+  console.log("Fragment ajouté à la table:", fragment);
 }
 
 function ControlSeedURL() {
@@ -187,24 +296,6 @@ function copierLien() {
 
   // Afficher une notification  après la copie
   alert("Lien copié dans le presse-papiers");
-}
-
-// Fonction pour mélanger un tableau
-function shuffle(array) {
-  var currentIndex = array.length,
-    randomIndex;
-
-  while (currentIndex != 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
-  }
-
-  return array;
 }
 
 // Fonction pour basculer l'état sélectionné d'une cellule
