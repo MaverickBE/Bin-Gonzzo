@@ -55,6 +55,10 @@ const ListeImages = [
   { id: 54, name: "Willow.webp" },
   { id: 55, name: "Woodwind.webp" },
   { id: 56, name: "TV.webp" },
+  { id: 57, name: "Yokai.webp" },
+  { id: 58, name: "Temperatures_glaciales.webp" },
+  { id: 59, name: "Orbes.webp" },
+  { id: 60, name: "Hantu.webp" },
   // Ajoutez le reste des images ici
 ];
 
