@@ -59,6 +59,15 @@ const ListeImages = [
   { id: 58, name: "Temperatures_glaciales.webp" },
   { id: 59, name: "Orbes.webp" },
   { id: 60, name: "Hantu.webp" },
+  { id: 61, name: "Sunny_restricted.webp" },
+  { id: 62, name: "Game_sans_son.webp" },
+  { id: 63, name: "Spectre.webp" },
+  { id: 64, name: "Fantome.webp" },
+  { id: 65, name: "Ombre.webp" },
+  { id: 66, name: "Yurei.webp" },
+  { id: 67, name: "Carte_lune.webp" },
+  { id: 68, name: "Carte_wof.webp" },
+  { id: 69, name: "Carte_pendu.webp" },
   // Ajoutez le reste des images ici
 ];
 
