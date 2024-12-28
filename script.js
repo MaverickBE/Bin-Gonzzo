@@ -69,6 +69,17 @@ const ListeImages = [
   { id: 68, name: "Carte_wof.webp" },
   { id: 69, name: "Carte_pendu.webp" },
   { id: 70, name: "Point_hope.webp" },
+  { id: 71, name: "Meteo_bloodmoon.webp" },
+  { id: 72, name: "Douche.webp" },
+  { id: 73, name: "Cercle_invoc.webp" },
+  { id: 74, name: "Crane.webp" },
+  { id: 75, name: "Obake.webp" },
+  { id: 76, name: "Ecriture_fantome.webp" },
+  { id: 77, name: "DOTS.webp" },
+  { id: 78, name: "Skin_poulpe.webp" },
+  { id: 79, name: "Meteo_brouillard.webp" },
+  { id: 80, name: "Meteo_sunrise.webp" },
+  { id: 81, name: "Meteo_neige.webp" },
   // Ajoutez le reste des images ici
 ];
 
