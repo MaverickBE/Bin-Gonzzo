@@ -84,7 +84,7 @@ const ListeImages = [
   { id: 83, name: "Media_video.webp" },
   { id: 84, name: "Porte_claque.webp" },
   { id: 85, name: "Rire_demoniaque.webp" },
-  { id: 86, name: "Skin_Obake.webp" },
+  { id: 86, name: "Skin_obake.webp" },
   { id: 87, name: "Souffle_bougie.webp" },
   // Ajoutez le reste des images ici
 ];
