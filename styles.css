@@ -1,24 +1,35 @@
-/* L'image de Titre */
+/* Logo Bin'Gonzzo - version grande (au chargement) */
 #Logo_Bingonzzo {
-    
-    margin-top: 200px;
-    width: 700px; 
-    height: auto; 
+    margin-top: 250px;
+    margin-bottom: 5px;
+    width: 700px;
+    height: auto;
     border-radius: 5px;
+    transition: width 0.3s ease, margin-top 0.3s ease, transform 0.3s ease;
 }
 
-/* Le media querie pour ce logo */
+/* Version petite du logo après génération de la carte */
+#Logo_Bingonzzo.logo-small {
+    margin-top: 30px;
+    width: 320px;
+}
+
+/* Media query : logo adaptable sur petit écran */
 @media only screen and (max-width: 600px) {
-    /* Styles spécifiques pour les écrans de moins de 600px de large */
     #Logo_Bingonzzo {
         max-width: 100%;
     }
+
+    #Logo_Bingonzzo.logo-small {
+        width: 70vw;
+        margin-top: 20px;
+    }
 }
 
-/* Style de base du bouton "Générer une nouvelle carte" */
-#boutonGenerer {
-    padding: 18px 18px;
-    align-items: center;
+
+/* 🔘 Style commun pour tous les boutons d'action (Générer / Partager / Hub) */
+.bouton-action {
+    padding: 18px 25px;
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     font-size: 18px;
@@ -27,68 +38,39 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* Style au passage de la souris sur le bouton "Générer une nouvelle carte" */
-#boutonGenerer:hover {
-    background-color: white;
-    color: #000000;
-}
-
-/* Le media querie pour ce bouton (écran 600px) */
-@media only screen and (max-width: 600px) {
-    #boutonGenerer {
-        max-width: 100%;
-    }
-}
-
-/* Le media querie pour ce bouton (écran 500px) */
-@media only screen and (max-width: 500px) {
-    #boutonGenerer {
-        font-size: 12px;
-        padding: 12px 12px;
-    }
-}
-
-/* Style de base du bouton "Partager ma carte" */
-#boutonPartager {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
     display: block;
-    padding: 18px 18px;
-    align-items: center;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 18px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 10px;
+    width: fit-content;
+    max-width: 420px;   /* limite sur grands écrans */
 }
 
-/* Style au passage de la souris sur le bouton "Partager ma carte" */
-#boutonPartager:hover {
+/* Hover identique pour tous */
+.bouton-action:hover {
     background-color: white;
     color: #000000;
+    transform: scale(1.03);
 }
 
-/* Le media querie pour ce bouton (écran 600px) */
-@media only screen and (max-width: 600px) {
-    #boutonPartager {
-        max-width: 100%;
+/* 📱 Tablettes */
+@media (max-width: 768px) {
+    .bouton-action {
+        font-size: 16px;
+        padding: 14px 18px;
+        max-width: 280px;   /* boutons plus courts */
     }
 }
 
-/* Le media querie pour ce bouton (écran 500px) */
-@media only screen and (max-width: 500px) {
-    #boutonPartager {
-        font-size: 12px;
-        padding: 12px 12px;
+/* 📱 Smartphones */
+@media (max-width: 480px) {
+    .bouton-action {
+        font-size: 14px;
+        padding: 10px 14px;
+        max-width: 220px;   /* encore plus compact */
     }
 }
+
 
 /* Style de la vidéo en background */
 video {
@@ -111,16 +93,29 @@ video {
     }
 }
 
-/* Style de base du corps de la page */
-body {
+/* Mode "ACCUEIL" = page centrée verticalement */
+body.accueil {
     background: black;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
+    justify-content: center; /* centre verticalement */
+    height: 100vh;           /* bloque à la taille écran */
     margin: 0;
 }
+
+/* Mode "CARTE" = page normale, scroll, logo non croppé */
+body.carte {
+    background: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;  /* pas centré */
+    min-height: 100vh;            /* permet de s’allonger */
+    margin: 0;
+    padding-top: 10px;
+}
+
 
 /* Style de base du fond du tableau */
 table {
@@ -196,7 +191,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 0, 0, 0.438);
+    background-color: rgba(255, 0, 0, 0.7);
     z-index: 2;
     display: none;
 }
@@ -206,7 +201,7 @@ img {
 }
 
 .selected::before {
-    content: url('images/Bingo_confirme.webp');
+    content: url('images/Bingo_confirme.png');
     width: 100%;
     height: 100%;
     position: absolute;
@@ -236,9 +231,9 @@ img {
 }
 
 .selected .logo {
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
+    transform: translate(-50%, -50%) rotateY(180deg);
+    width: 70px;
+    height: 70px;
 }
 
 /* Le media querie pour cette vidéo (écran 600px) */
