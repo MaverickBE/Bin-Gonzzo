@@ -31,6 +31,10 @@
     }
 }
 
+#Logo_Bingonzzo.logo-small:hover {
+    transform: scale(1.08);
+}
+
 
 /* 🔘 Style commun pour tous les boutons d'action (Générer / Partager / Hub) */
 .bouton-action {
