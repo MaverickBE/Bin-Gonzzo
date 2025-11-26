@@ -1,11 +1,16 @@
-/* Logo Bin'Gonzzo - version grande (au chargement) */
+/* Logo Bin'Gonzzo */
 #Logo_Bingonzzo {
-    margin-top: 250px;
-    margin-bottom: 5px;
-    width: 700px;
+    display: block;
+    margin-top: 200px;
+    width: 450px;
     height: auto;
     border-radius: 5px;
-    transition: width 0.3s ease, margin-top 0.3s ease, transform 0.3s ease;
+    transition: transform 0.3s ease, width 0.3s ease, margin-top 0.3s ease;
+}
+
+/* Petit zoom au survol */
+#Logo_Bingonzzo:hover {
+    transform: scale(1.10);
 }
 
 /* Version petite du logo après génération de la carte */
