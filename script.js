@@ -69,6 +69,9 @@ const ListeImages = [
   { id: 68, name: "Carte_wof.webp" },
   { id: 69, name: "Carte_pendu.webp" },
   { id: 70, name: "Point_hope.webp" },
+  { id: 71, name: "Nells_Diner.webp" },
+  { id: 72, name: "Jukebox.webp" },
+  { id: 73, name: "Steak.webp" },
   // Ajoutez le reste des images ici
 ];
 
